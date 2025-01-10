@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3B1276282D31B2D5002D6D73 /* WroclawDwarfsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1276272D31B2D5002D6D73 /* WroclawDwarfsApp.swift */; };
+		3B12762A2D31B2D5002D6D73 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1276292D31B2D5002D6D73 /* ContentView.swift */; };
+		3B12762C2D31B2D7002D6D73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B12762B2D31B2D7002D6D73 /* Assets.xcassets */; };
+		3B12762F2D31B2D7002D6D73 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B12762E2D31B2D7002D6D73 /* Preview Assets.xcassets */; };
+		3B1276392D31B2D8002D6D73 /* WroclawDwarfsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1276382D31B2D8002D6D73 /* WroclawDwarfsTests.swift */; };
+		3B1276432D31B2D8002D6D73 /* WroclawDwarfsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1276422D31B2D8002D6D73 /* WroclawDwarfsUITests.swift */; };
+		3B1276452D31B2D8002D6D73 /* WroclawDwarfsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1276442D31B2D8002D6D73 /* WroclawDwarfsUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3B1276352D31B2D8002D6D73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B12761C2D31B2D5002D6D73 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B1276232D31B2D5002D6D73;
+			remoteInfo = WroclawDwarfs;
+		};
+		3B12763F2D31B2D8002D6D73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B12761C2D31B2D5002D6D73 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B1276232D31B2D5002D6D73;
+			remoteInfo = WroclawDwarfs;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3B1276242D31B2D5002D6D73 /* WroclawDwarfs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WroclawDwarfs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B1276272D31B2D5002D6D73 /* WroclawDwarfsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WroclawDwarfsApp.swift; sourceTree = "<group>"; };
+		3B1276292D31B2D5002D6D73 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3B12762B2D31B2D7002D6D73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3B12762E2D31B2D7002D6D73 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3B1276342D31B2D8002D6D73 /* WroclawDwarfsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WroclawDwarfsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B1276382D31B2D8002D6D73 /* WroclawDwarfsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WroclawDwarfsTests.swift; sourceTree = "<group>"; };
+		3B12763E2D31B2D8002D6D73 /* WroclawDwarfsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WroclawDwarfsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B1276422D31B2D8002D6D73 /* WroclawDwarfsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WroclawDwarfsUITests.swift; sourceTree = "<group>"; };
+		3B1276442D31B2D8002D6D73 /* WroclawDwarfsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WroclawDwarfsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3B1276212D31B2D5002D6D73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B1276312D31B2D8002D6D73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B12763B2D31B2D8002D6D73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B12761B2D31B2D5002D6D73 = {
+			isa = PBXGroup;
+			children = (
+				3B1276262D31B2D5002D6D73 /* WroclawDwarfs */,
+				3B1276372D31B2D8002D6D73 /* WroclawDwarfsTests */,
+				3B1276412D31B2D8002D6D73 /* WroclawDwarfsUITests */,
+				3B1276252D31B2D5002D6D73 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3B1276252D31B2D5002D6D73 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B1276242D31B2D5002D6D73 /* WroclawDwarfs.app */,
+				3B1276342D31B2D8002D6D73 /* WroclawDwarfsTests.xctest */,
+				3B12763E2D31B2D8002D6D73 /* WroclawDwarfsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B1276262D31B2D5002D6D73 /* WroclawDwarfs */ = {
+			isa = PBXGroup;
+			children = (
+				3B1276272D31B2D5002D6D73 /* WroclawDwarfsApp.swift */,
+				3B1276292D31B2D5002D6D73 /* ContentView.swift */,
+				3B12762B2D31B2D7002D6D73 /* Assets.xcassets */,
+				3B12762D2D31B2D7002D6D73 /* Preview Content */,
+			);
+			path = WroclawDwarfs;
+			sourceTree = "<group>";
+		};
+		3B12762D2D31B2D7002D6D73 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3B12762E2D31B2D7002D6D73 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3B1276372D31B2D8002D6D73 /* WroclawDwarfsTests */ = {
+			isa = PBXGroup;
+			children = (
+				3B1276382D31B2D8002D6D73 /* WroclawDwarfsTests.swift */,
+			);
+			path = WroclawDwarfsTests;
+			sourceTree = "<group>";
+		};
+		3B1276412D31B2D8002D6D73 /* WroclawDwarfsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3B1276422D31B2D8002D6D73 /* WroclawDwarfsUITests.swift */,
+				3B1276442D31B2D8002D6D73 /* WroclawDwarfsUITestsLaunchTests.swift */,
+			);
+			path = WroclawDwarfsUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3B1276232D31B2D5002D6D73 /* WroclawDwarfs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B1276482D31B2D8002D6D73 /* Build configuration list for PBXNativeTarget "WroclawDwarfs" */;
+			buildPhases = (
+				3B1276202D31B2D5002D6D73 /* Sources */,
+				3B1276212D31B2D5002D6D73 /* Frameworks */,
+				3B1276222D31B2D5002D6D73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WroclawDwarfs;
+			productName = WroclawDwarfs;
+			productReference = 3B1276242D31B2D5002D6D73 /* WroclawDwarfs.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3B1276332D31B2D8002D6D73 /* WroclawDwarfsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B12764B2D31B2D8002D6D73 /* Build configuration list for PBXNativeTarget "WroclawDwarfsTests" */;
+			buildPhases = (
+				3B1276302D31B2D8002D6D73 /* Sources */,
+				3B1276312D31B2D8002D6D73 /* Frameworks */,
+				3B1276322D31B2D8002D6D73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B1276362D31B2D8002D6D73 /* PBXTargetDependency */,
+			);
+			name = WroclawDwarfsTests;
+			productName = WroclawDwarfsTests;
+			productReference = 3B1276342D31B2D8002D6D73 /* WroclawDwarfsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3B12763D2D31B2D8002D6D73 /* WroclawDwarfsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B12764E2D31B2D8002D6D73 /* Build configuration list for PBXNativeTarget "WroclawDwarfsUITests" */;
+			buildPhases = (
+				3B12763A2D31B2D8002D6D73 /* Sources */,
+				3B12763B2D31B2D8002D6D73 /* Frameworks */,
+				3B12763C2D31B2D8002D6D73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B1276402D31B2D8002D6D73 /* PBXTargetDependency */,
+			);
+			name = WroclawDwarfsUITests;
+			productName = WroclawDwarfsUITests;
+			productReference = 3B12763E2D31B2D8002D6D73 /* WroclawDwarfsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B12761C2D31B2D5002D6D73 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					3B1276232D31B2D5002D6D73 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					3B1276332D31B2D8002D6D73 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 3B1276232D31B2D5002D6D73;
+					};
+					3B12763D2D31B2D8002D6D73 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 3B1276232D31B2D5002D6D73;
+					};
+				};
+			};
+			buildConfigurationList = 3B12761F2D31B2D5002D6D73 /* Build configuration list for PBXProject "WroclawDwarfs" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3B12761B2D31B2D5002D6D73;
+			productRefGroup = 3B1276252D31B2D5002D6D73 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3B1276232D31B2D5002D6D73 /* WroclawDwarfs */,
+				3B1276332D31B2D8002D6D73 /* WroclawDwarfsTests */,
+				3B12763D2D31B2D8002D6D73 /* WroclawDwarfsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B1276222D31B2D5002D6D73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B12762F2D31B2D7002D6D73 /* Preview Assets.xcassets in Resources */,
+				3B12762C2D31B2D7002D6D73 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B1276322D31B2D8002D6D73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B12763C2D31B2D8002D6D73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3B1276202D31B2D5002D6D73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B12762A2D31B2D5002D6D73 /* ContentView.swift in Sources */,
+				3B1276282D31B2D5002D6D73 /* WroclawDwarfsApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B1276302D31B2D8002D6D73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B1276392D31B2D8002D6D73 /* WroclawDwarfsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B12763A2D31B2D8002D6D73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B1276432D31B2D8002D6D73 /* WroclawDwarfsUITests.swift in Sources */,
+				3B1276452D31B2D8002D6D73 /* WroclawDwarfsUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3B1276362D31B2D8002D6D73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B1276232D31B2D5002D6D73 /* WroclawDwarfs */;
+			targetProxy = 3B1276352D31B2D8002D6D73 /* PBXContainerItemProxy */;
+		};
+		3B1276402D31B2D8002D6D73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B1276232D31B2D5002D6D73 /* WroclawDwarfs */;
+			targetProxy = 3B12763F2D31B2D8002D6D73 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3B1276462D31B2D8002D6D73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3B1276472D31B2D8002D6D73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3B1276492D31B2D8002D6D73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WroclawDwarfs/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kapelpepe.WroclawDwarfs;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B12764A2D31B2D8002D6D73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WroclawDwarfs/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kapelpepe.WroclawDwarfs;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3B12764C2D31B2D8002D6D73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kapelpepe.WroclawDwarfsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WroclawDwarfs.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WroclawDwarfs";
+			};
+			name = Debug;
+		};
+		3B12764D2D31B2D8002D6D73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kapelpepe.WroclawDwarfsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WroclawDwarfs.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WroclawDwarfs";
+			};
+			name = Release;
+		};
+		3B12764F2D31B2D8002D6D73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kapelpepe.WroclawDwarfsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WroclawDwarfs;
+			};
+			name = Debug;
+		};
+		3B1276502D31B2D8002D6D73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kapelpepe.WroclawDwarfsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WroclawDwarfs;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B12761F2D31B2D5002D6D73 /* Build configuration list for PBXProject "WroclawDwarfs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B1276462D31B2D8002D6D73 /* Debug */,
+				3B1276472D31B2D8002D6D73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B1276482D31B2D8002D6D73 /* Build configuration list for PBXNativeTarget "WroclawDwarfs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B1276492D31B2D8002D6D73 /* Debug */,
+				3B12764A2D31B2D8002D6D73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B12764B2D31B2D8002D6D73 /* Build configuration list for PBXNativeTarget "WroclawDwarfsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B12764C2D31B2D8002D6D73 /* Debug */,
+				3B12764D2D31B2D8002D6D73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B12764E2D31B2D8002D6D73 /* Build configuration list for PBXNativeTarget "WroclawDwarfsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B12764F2D31B2D8002D6D73 /* Debug */,
+				3B1276502D31B2D8002D6D73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3B12761C2D31B2D5002D6D73 /* Project object */;
+}
