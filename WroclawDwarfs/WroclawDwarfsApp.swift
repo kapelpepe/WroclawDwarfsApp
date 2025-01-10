@@ -11,7 +11,7 @@ import SwiftUI
 struct WroclawDwarfsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DwarfMapView()
         }
     }
 }

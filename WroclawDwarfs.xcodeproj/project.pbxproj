@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3B1276282D31B2D5002D6D73 /* WroclawDwarfsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1276272D31B2D5002D6D73 /* WroclawDwarfsApp.swift */; };
-		3B12762A2D31B2D5002D6D73 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1276292D31B2D5002D6D73 /* ContentView.swift */; };
+		3B12762A2D31B2D5002D6D73 /* DwarfMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1276292D31B2D5002D6D73 /* DwarfMapView.swift */; };
 		3B12762C2D31B2D7002D6D73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B12762B2D31B2D7002D6D73 /* Assets.xcassets */; };
 		3B12762F2D31B2D7002D6D73 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B12762E2D31B2D7002D6D73 /* Preview Assets.xcassets */; };
 		3B1276392D31B2D8002D6D73 /* WroclawDwarfsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1276382D31B2D8002D6D73 /* WroclawDwarfsTests.swift */; };
 		3B1276432D31B2D8002D6D73 /* WroclawDwarfsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1276422D31B2D8002D6D73 /* WroclawDwarfsUITests.swift */; };
 		3B1276452D31B2D8002D6D73 /* WroclawDwarfsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1276442D31B2D8002D6D73 /* WroclawDwarfsUITestsLaunchTests.swift */; };
+		3B5C3EDC2D31B60D00E48877 /* dwarfs.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B5C3EDB2D31B60D00E48877 /* dwarfs.json */; };
+		3B5C3EDE2D31B62500E48877 /* Dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C3EDD2D31B62500E48877 /* Dwarf.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +38,7 @@
 /* Begin PBXFileReference section */
 		3B1276242D31B2D5002D6D73 /* WroclawDwarfs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WroclawDwarfs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1276272D31B2D5002D6D73 /* WroclawDwarfsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WroclawDwarfsApp.swift; sourceTree = "<group>"; };
-		3B1276292D31B2D5002D6D73 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3B1276292D31B2D5002D6D73 /* DwarfMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwarfMapView.swift; sourceTree = "<group>"; };
 		3B12762B2D31B2D7002D6D73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B12762E2D31B2D7002D6D73 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3B1276342D31B2D8002D6D73 /* WroclawDwarfsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WroclawDwarfsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +46,8 @@
 		3B12763E2D31B2D8002D6D73 /* WroclawDwarfsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WroclawDwarfsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1276422D31B2D8002D6D73 /* WroclawDwarfsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WroclawDwarfsUITests.swift; sourceTree = "<group>"; };
 		3B1276442D31B2D8002D6D73 /* WroclawDwarfsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WroclawDwarfsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3B5C3EDB2D31B60D00E48877 /* dwarfs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = dwarfs.json; path = ../../../../Downloads/dwarfs.json; sourceTree = "<group>"; };
+		3B5C3EDD2D31B62500E48877 /* Dwarf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dwarf.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		3B12761B2D31B2D5002D6D73 = {
 			isa = PBXGroup;
 			children = (
+				3B5C3EDA2D31B5FD00E48877 /* Resources */,
 				3B1276262D31B2D5002D6D73 /* WroclawDwarfs */,
 				3B1276372D31B2D8002D6D73 /* WroclawDwarfsTests */,
 				3B1276412D31B2D8002D6D73 /* WroclawDwarfsUITests */,
@@ -95,7 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				3B1276272D31B2D5002D6D73 /* WroclawDwarfsApp.swift */,
-				3B1276292D31B2D5002D6D73 /* ContentView.swift */,
+				3B5C3EDD2D31B62500E48877 /* Dwarf.swift */,
+				3B1276292D31B2D5002D6D73 /* DwarfMapView.swift */,
 				3B12762B2D31B2D7002D6D73 /* Assets.xcassets */,
 				3B12762D2D31B2D7002D6D73 /* Preview Content */,
 			);
@@ -125,6 +131,14 @@
 				3B1276442D31B2D8002D6D73 /* WroclawDwarfsUITestsLaunchTests.swift */,
 			);
 			path = WroclawDwarfsUITests;
+			sourceTree = "<group>";
+		};
+		3B5C3EDA2D31B5FD00E48877 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3B5C3EDB2D31B60D00E48877 /* dwarfs.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B5C3EDC2D31B60D00E48877 /* dwarfs.json in Resources */,
 				3B12762F2D31B2D7002D6D73 /* Preview Assets.xcassets in Resources */,
 				3B12762C2D31B2D7002D6D73 /* Assets.xcassets in Resources */,
 			);
@@ -257,8 +272,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B12762A2D31B2D5002D6D73 /* ContentView.swift in Sources */,
+				3B12762A2D31B2D5002D6D73 /* DwarfMapView.swift in Sources */,
 				3B1276282D31B2D5002D6D73 /* WroclawDwarfsApp.swift in Sources */,
+				3B5C3EDE2D31B62500E48877 /* Dwarf.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
