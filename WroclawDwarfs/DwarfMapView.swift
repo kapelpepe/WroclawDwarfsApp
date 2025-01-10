@@ -20,9 +20,10 @@ struct DwarfMapView: View {
         Map(coordinateRegion: $region, annotationItems: dwarfs) { dwarf in
             MapAnnotation(coordinate: dwarf.coordinate2D) {
                 VStack {
+                    let scaleFactor = max(1, 0.0001 / region.span.latitudeDelta)
                     Image(systemName: "figure.diamond.fill")
                         .resizable()
-                        .frame(width: 300, height: 300)
+                        .frame(width: 30 * scaleFactor, height: 30 * scaleFactor)
                         .foregroundColor(.red)
                     Text(dwarf.name)
                         .font(.caption)
@@ -50,6 +51,7 @@ struct DwarfMapView: View {
         }
     }
 }
+
 
 struct DwarfDetailView: View {
     var dwarf: Dwarf
