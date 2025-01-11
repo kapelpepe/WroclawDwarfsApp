@@ -103,4 +103,17 @@ struct DwarfDatabase {
             print("Błąd ładowania danych początkowych: \(error)")
         }
     }
+    
+    func reloadDatabase() {
+        guard let url = Bundle.main.url(forResource: "dwarfs", withExtension: "json") else { return }
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                let initialDwarfs = try decoder.decode([Dwarf].self, from: data)
+                try db.run(dwarfsTable.delete()) //Usuwa istniejace dane
+                insertDwarfs(initialDwarfs)
+            } catch {
+                print("Błąd ładowania danych początkowych: \(error)")
+            }
+    }
 }

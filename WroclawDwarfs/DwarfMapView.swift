@@ -43,6 +43,12 @@ struct DwarfMapView: View {
                             showDwarfsList.toggle()  // Otwórz lub zamknij listę krasnali
                         }
                     }
+                    //WERSJA TESTOWA MA TEN BUTTON! NA KONIEC NALEZU USUNAC BUTTON, FUNCKEJ RELOADNEWDATA, ORAZ FUNKCJE RELOADDATABASE Z PLIKU DWARFFATABASE
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Załaduj Nowe Krasnale") {
+                            reloadNewData()  // Załaduj nowe dane z JSON
+                        }
+                    }
                 }
                 .onAppear {
                     loadData()
@@ -63,11 +69,17 @@ struct DwarfMapView: View {
         dwarfs = database.fetchDwarfs()
     }
     
+    func reloadNewData() {
+            // Ponownie załaduj dane z JSON
+            database.reloadDatabase()
+            loadData()  // Załaduj nowe dane z bazy po załadowaniu danych z JSON
+    }
+    
     func focusOnDwarf(_ dwarf: Dwarf) {
         withAnimation {
             region = MKCoordinateRegion(
                 center: dwarf.coordinate2D,
-                span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002) // Zoom
+                span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001) // Zoom
             )
         }
     }
