@@ -15,59 +15,105 @@ struct DwarfMapView: View {
     )
     
     @State private var dwarfs: [Dwarf] = []
+    @State private var selectedDwarf: Dwarf?
+    @State private var showDwarfsList = false
     private let database = DwarfDatabase()
-    
+                
     var body: some View {
         NavigationView {
-            Map(coordinateRegion: $region, annotationItems: dwarfs) { dwarf in
-                MapAnnotation(coordinate: dwarf.coordinate2D) {
-                    VStack {
-                        let scaleFactor = max(1, 0.0001 / region.span.latitudeDelta)
-                        Image(dwarf.visited ? "dwarf_visited" : "dwarf_not_visited")
-                            .resizable()
-                            .frame(width: 30 * scaleFactor, height: 30 * scaleFactor)
-                            .foregroundColor(dwarf.visited ? .green : .red)
-                        Text(dwarf.name)
-                            .font(.caption)
-                            .foregroundColor(.black)
-                    }
-                }
-            }
-            .navigationTitle("Mapa Krasnali")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Menu("Krasnale") {
-                        ForEach(dwarfs, id: \.id) { dwarf in
-                            Button(action: {
-                                toggleVisited(dwarf)
-                            }) {
-                                HStack {
-                                    Text(dwarf.name)
-                                    if dwarf.visited {
-                                        Image(systemName: "checkmark")
-                                    }
-                                }
-                            }
+            VStack {
+                Map(coordinateRegion: $region, annotationItems: dwarfs) { dwarf in
+                    MapAnnotation(coordinate: dwarf.coordinate2D) {
+                        VStack {
+                            let scaleFactor = max(1, 0.0001 / region.span.latitudeDelta)
+                            Image(dwarf.visited ? "dwarf_visited" : "dwarf_not_visited")
+                                .resizable()
+                                .frame(width: 30 * scaleFactor, height: 30 * scaleFactor)
+                                .foregroundColor(dwarf.visited ? .green : .red)
+                            Text(dwarf.name)
+                                .font(.caption)
+                                .foregroundColor(.black)
                         }
                     }
                 }
+                .navigationTitle("Mapa Krasnali")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Krasnale") {
+                            showDwarfsList.toggle()  // Otwórz lub zamknij listę krasnali
+                        }
+                    }
+                }
+                .onAppear {
+                    loadData()
+                }
             }
-            .onAppear {
-                database.loadInitialDataIfNeeded()
-                dwarfs = database.fetchDwarfs()
-                loadData()
+            .sheet(isPresented: $showDwarfsList) {
+                DwarfListView(dwarfs: dwarfs, onVisited: { dwarf in
+                    markAsVisited(dwarf)
+                }, focusOnDwarf: { dwarf in
+                    focusOnDwarf(dwarf)
+                    showDwarfsList = false // Zamknij sheet po kliknięciu w krasnala
+                })
             }
         }
     }
-
+    
     func loadData() {
         dwarfs = database.fetchDwarfs()
     }
     
-    func toggleVisited(_ dwarf: Dwarf) {
-        let updatedStatus = !dwarf.visited
-        database.markAsVisited(dwarfID: dwarf.id, visited: updatedStatus)
-        loadData()
+    func focusOnDwarf(_ dwarf: Dwarf) {
+        withAnimation {
+            region = MKCoordinateRegion(
+                center: dwarf.coordinate2D,
+                span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002) // Zoom
+            )
+        }
+    }
+    
+    func markAsVisited(_ dwarf: Dwarf) {
+        let updatedDwarf = Dwarf(id: dwarf.id, name: dwarf.name, description: dwarf.description, coordinate: dwarf.coordinate, visited: true)
+        database.markAsVisited(dwarfID: dwarf.id, visited: true)
+        
+        // Update local data to reflect the new visited state
+        if let index = dwarfs.firstIndex(where: { $0.id == dwarf.id }) {
+            dwarfs[index].visited = true
+        }
+    }
+}
+
+struct DwarfListView: View {
+    var dwarfs: [Dwarf]
+    var onVisited: (Dwarf) -> Void
+    var focusOnDwarf: (Dwarf) -> Void
+    
+    var body: some View {
+        VStack {
+            List(dwarfs) { dwarf in
+                HStack {
+                    Text(dwarf.name)
+                    Spacer()
+                    if dwarf.visited {
+                        Text("Odwiedzony")
+                            .foregroundColor(.green)
+                    } else {
+                        Text("Nieodwiedzony")
+                            .foregroundColor(.red)
+                    }
+                }
+                .onTapGesture {
+                    focusOnDwarf(dwarf)  // Funkcja do zmiany lokalizacji i focusu
+                }
+                .contextMenu {
+                    Button("Oznacz jako odwiedzony") {
+                        onVisited(dwarf)
+                    }
+                }
+            }
+            Spacer()
+        }
+        .padding()
     }
 }
 
