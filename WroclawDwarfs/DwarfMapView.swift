@@ -23,7 +23,7 @@ struct DwarfMapView: View {
                 MapAnnotation(coordinate: dwarf.coordinate2D) {
                     VStack {
                         let scaleFactor = max(1, 0.0001 / region.span.latitudeDelta)
-                        Image(systemName: dwarf.visited ? "figure.walk.circle.fill" : "figure.diamond.fill")
+                        Image(dwarf.visited ? "dwarf_visited" : "dwarf_not_visited")
                             .resizable()
                             .frame(width: 30 * scaleFactor, height: 30 * scaleFactor)
                             .foregroundColor(dwarf.visited ? .green : .red)
