@@ -16,6 +16,8 @@
 		3B1276452D31B2D8002D6D73 /* WroclawDwarfsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1276442D31B2D8002D6D73 /* WroclawDwarfsUITestsLaunchTests.swift */; };
 		3B5C3EDC2D31B60D00E48877 /* dwarfs.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B5C3EDB2D31B60D00E48877 /* dwarfs.json */; };
 		3B5C3EDE2D31B62500E48877 /* Dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C3EDD2D31B62500E48877 /* Dwarf.swift */; };
+		3BC624C72D32C25A007305CE /* DwarfDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC624C62D32C25A007305CE /* DwarfDatabase.swift */; };
+		3BC624CA2D32C402007305CE /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 3BC624C92D32C402007305CE /* SQLite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,7 @@
 		3B1276442D31B2D8002D6D73 /* WroclawDwarfsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WroclawDwarfsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3B5C3EDB2D31B60D00E48877 /* dwarfs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = dwarfs.json; path = ../../../../Downloads/dwarfs.json; sourceTree = "<group>"; };
 		3B5C3EDD2D31B62500E48877 /* Dwarf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dwarf.swift; sourceTree = "<group>"; };
+		3BC624C62D32C25A007305CE /* DwarfDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwarfDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BC624CA2D32C402007305CE /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +108,7 @@
 				3B1276292D31B2D5002D6D73 /* DwarfMapView.swift */,
 				3B12762B2D31B2D7002D6D73 /* Assets.xcassets */,
 				3B12762D2D31B2D7002D6D73 /* Preview Content */,
+				3BC624C62D32C25A007305CE /* DwarfDatabase.swift */,
 			);
 			path = WroclawDwarfs;
 			sourceTree = "<group>";
@@ -157,6 +162,9 @@
 			dependencies = (
 			);
 			name = WroclawDwarfs;
+			packageProductDependencies = (
+				3BC624C92D32C402007305CE /* SQLite */,
+			);
 			productName = WroclawDwarfs;
 			productReference = 3B1276242D31B2D5002D6D73 /* WroclawDwarfs.app */;
 			productType = "com.apple.product-type.application";
@@ -229,6 +237,9 @@
 				Base,
 			);
 			mainGroup = 3B12761B2D31B2D5002D6D73;
+			packageReferences = (
+				3BC624C82D32C3B0007305CE /* XCRemoteSwiftPackageReference "SQLite" */,
+			);
 			productRefGroup = 3B1276252D31B2D5002D6D73 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -275,6 +286,7 @@
 				3B12762A2D31B2D5002D6D73 /* DwarfMapView.swift in Sources */,
 				3B1276282D31B2D5002D6D73 /* WroclawDwarfsApp.swift in Sources */,
 				3B5C3EDE2D31B62500E48877 /* Dwarf.swift in Sources */,
+				3BC624C72D32C25A007305CE /* DwarfDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +610,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3BC624C82D32C3B0007305CE /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3BC624C92D32C402007305CE /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3BC624C82D32C3B0007305CE /* XCRemoteSwiftPackageReference "SQLite" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3B12761C2D31B2D5002D6D73 /* Project object */;
 }

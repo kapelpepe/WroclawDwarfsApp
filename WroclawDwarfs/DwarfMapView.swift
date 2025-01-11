@@ -15,61 +15,59 @@ struct DwarfMapView: View {
     )
     
     @State private var dwarfs: [Dwarf] = []
+    private let database = DwarfDatabase()
     
     var body: some View {
-        Map(coordinateRegion: $region, annotationItems: dwarfs) { dwarf in
-            MapAnnotation(coordinate: dwarf.coordinate2D) {
-                VStack {
-                    let scaleFactor = max(1, 0.0001 / region.span.latitudeDelta)
-                    Image(systemName: "figure.diamond.fill")
-                        .resizable()
-                        .frame(width: 30 * scaleFactor, height: 30 * scaleFactor)
-                        .foregroundColor(.red)
-                    Text(dwarf.name)
-                        .font(.caption)
-                        .foregroundColor(.black)
+        NavigationView {
+            Map(coordinateRegion: $region, annotationItems: dwarfs) { dwarf in
+                MapAnnotation(coordinate: dwarf.coordinate2D) {
+                    VStack {
+                        let scaleFactor = max(1, 0.0001 / region.span.latitudeDelta)
+                        Image(systemName: dwarf.visited ? "figure.walk.circle.fill" : "figure.diamond.fill")
+                            .resizable()
+                            .frame(width: 30 * scaleFactor, height: 30 * scaleFactor)
+                            .foregroundColor(dwarf.visited ? .green : .red)
+                        Text(dwarf.name)
+                            .font(.caption)
+                            .foregroundColor(.black)
+                    }
                 }
             }
-        }
-        .onAppear {
-            loadDwarfsData()
-        }
-    }
-    
-    func loadDwarfsData() {
-        guard let url = Bundle.main.url(forResource: "dwarfs", withExtension: "json") else {
-            print("Brak pliku JSON z danymi krasnali.")
-            return
-        }
-        
-        do {
-            let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            dwarfs = try decoder.decode([Dwarf].self, from: data)
-        } catch {
-            print("Błąd wczytywania danych: \(error)")
-        }
-    }
-}
-
-
-struct DwarfDetailView: View {
-    var dwarf: Dwarf
-    
-    var body: some View {
-        VStack {
-            Text(dwarf.name)
-                .font(.title)
-                .fontWeight(.bold)
-            Text(dwarf.description)
-                .font(.body)
-                .padding(.top, 10)
-            Button("Close") {
-                // Add functionality here
+            .navigationTitle("Mapa Krasnali")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu("Krasnale") {
+                        ForEach(dwarfs, id: \.id) { dwarf in
+                            Button(action: {
+                                toggleVisited(dwarf)
+                            }) {
+                                HStack {
+                                    Text(dwarf.name)
+                                    if dwarf.visited {
+                                        Image(systemName: "checkmark")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            .padding(.top, 20)
+            .onAppear {
+                database.loadInitialDataIfNeeded()
+                dwarfs = database.fetchDwarfs()
+                loadData()
+            }
         }
-        .padding()
+    }
+
+    func loadData() {
+        dwarfs = database.fetchDwarfs()
+    }
+    
+    func toggleVisited(_ dwarf: Dwarf) {
+        let updatedStatus = !dwarf.visited
+        database.markAsVisited(dwarfID: dwarf.id, visited: updatedStatus)
+        loadData()
     }
 }
 

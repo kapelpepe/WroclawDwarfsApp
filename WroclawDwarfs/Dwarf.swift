@@ -13,6 +13,7 @@ struct Dwarf: Identifiable, Decodable {
     var name: String
     var description: String
     var coordinate: Coordinate
+    var visited: Bool
 
     struct Coordinate: Decodable {
         var latitude: Double
