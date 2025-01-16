@@ -18,24 +18,25 @@ struct DwarfMapView: View {
     @State private var selectedDwarf: Dwarf?
     @State private var showDwarfsList = false
     @State private var searchText: String = ""
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+    
     private let database = DwarfDatabase()
     
     var filteredDwarfs: [Dwarf] {
-            // Filtrowanie krasnali na podstawie tekstu wyszukiwania
-            if searchText.isEmpty {
-                return dwarfs
-            } else {
-                return dwarfs.filter { $0.name.lowercased().contains(searchText.lowercased()) } //Funkcja wyzszego rzedu - filter
-            }
+        if searchText.isEmpty {
+            return dwarfs
+        } else {
+            return dwarfs.filter { $0.name.lowercased().contains(searchText.lowercased()) }
         }
+    }
     
     var body: some View {
         NavigationView {
             VStack {
                 Map(coordinateRegion: $region, annotationItems: dwarfs) { dwarf in
-                MapAnnotation(coordinate: dwarf.coordinate2D) {
+                    MapAnnotation(coordinate: dwarf.coordinate2D) {
                         ZStack {
-                            // Ikona krasnala
                             VStack {
                                 let scaleFactor = max(1, 0.0001 / region.span.latitudeDelta)
                                 Image(dwarf.visited ? "dwarf_visited" : "dwarf_not_visited")
@@ -48,40 +49,39 @@ struct DwarfMapView: View {
                             }
                             .onTapGesture {
                                 focusOnDwarf(dwarf)
-                                selectDwarf(dwarf)  // Wybór krasnala po kliknięciu
+                                selectDwarf(dwarf)
                             }
-                            // Biały prostokąt
-                            VStack {
-                                // Biały prostokąt z przyciskiem i imieniem
-                                if selectedDwarf?.id == dwarf.id {
-                                    VStack(spacing: 5) {
-                                        Text(dwarf.name)
-                                            .font(.headline) // Pogrubienie imienia
-                                            .foregroundColor(.black)
-                                            .padding(.bottom, 5)
-                                        Text(dwarf.description)
-                                            .foregroundColor(.black)
-                                            .padding(.bottom, 5)
-                                        Button(action: {
-                                            markAsVisited(dwarf) // Zmiana stanu "odwiedzenia"
-                                        }) {
-                                            Text(dwarf.visited ? "Nieodwiedzone" : "Odwiedzone")
-                                                .foregroundColor(.white)
-                                                .padding()
-                                                .background(dwarf.visited ? Color.red : Color.green)
-                                                .cornerRadius(8)
-                                        }
-                                        .padding(5)
-                                        .background(Color.white)
-                                        .cornerRadius(8)
-                                        .shadow(radius: 5)
+                            
+                            // Szczegóły krasnala
+                            if let selected = selectedDwarf, selected.id == dwarf.id {
+                                VStack(spacing: 5) {
+                                    Text(dwarf.name)
+                                        .font(.headline)
+                                        .foregroundColor(.black)
+                                    Text(dwarf.description)
+                                        .foregroundColor(.black)
+                                    
+                                    // Przycisk do zmiany stanu "Odwiedzone"
+                                    Button(action: {
+                                        markAsVisited(dwarf)
+                                    }) {
+                                        Text(dwarf.visited ? "Nieodwiedzone" : "Odwiedzony")
+                                            .foregroundColor(.white)
+                                            .padding()
+                                            .background(dwarf.visited ? Color.red : Color.green)
+                                            .cornerRadius(8)
                                     }
-                                    .padding(10)
+                                    .padding(5)
                                     .background(Color.white)
                                     .cornerRadius(8)
                                     .shadow(radius: 5)
-                                    .offset(y: -105) // Przesunięcie w górę
                                 }
+                                .padding(10)
+                                .background(Color.white)
+                                .cornerRadius(8)
+                                .shadow(radius: 5)
+                                .offset(y: -105)
+                                .animation(.easeInOut(duration: 0.3), value: selectedDwarf)
                             }
                         }
                     }
@@ -89,7 +89,6 @@ struct DwarfMapView: View {
                 .gesture(
                     TapGesture()
                         .onEnded {
-                            // Tylko jeśli przycisk jest widoczny (selectedDwarf != nil), wtedy pozwól na ukrycie przycisku
                             if selectedDwarf != nil {
                                 selectedDwarf = nil
                             }
@@ -99,13 +98,12 @@ struct DwarfMapView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Krasnale") {
-                            showDwarfsList.toggle()  // Otwórz lub zamknij listę krasnali
+                            showDwarfsList.toggle()
                         }
                     }
-                    // Testowy przycisk do załadowania nowych danych
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button("Załaduj Nowe Krasnale") {
-                            reloadNewData()  // Załaduj nowe dane z JSON
+                            reloadNewData()
                         }
                     }
                 }
@@ -114,60 +112,66 @@ struct DwarfMapView: View {
                 }
             }
             .sheet(isPresented: $showDwarfsList) {
-                            DwarfListView(
-                                dwarfs: filteredDwarfs,
-                                onVisited: { dwarf in
-                                    markAsVisited(dwarf)
-                                },
-                                focusOnDwarf: { dwarf in
-                                    focusOnDwarf(dwarf)
-                                    showDwarfsList = false // Zamknij sheet po kliknięciu w krasnala
-                                },
-                                searchText: $searchText // Przekazywanie searchText jako Binding
-                            )
-                        }
+                DwarfListView(
+                    dwarfs: filteredDwarfs,
+                    onVisited: { dwarf in
+                        markAsVisited(dwarf)
+                    },
+                    focusOnDwarf: { dwarf in
+                        focusOnDwarf(dwarf)
+                        showDwarfsList = false
+                    },
+                    searchText: $searchText
+                )
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Informacja"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            }
         }
     }
     
     func loadData() {
-        dwarfs = database.fetchDwarfs()  // Pobierz dane krasnali z bazy danych
+        do {
+            let dwarfs: Set<Dwarf> = try database.fetchDwarfs()
+            self.dwarfs = Array(dwarfs)
+        } catch {
+            print("Błąd wczytywania danych: \(error.localizedDescription)")
+        }
     }
     
     func reloadNewData() {
-        // Ponownie załaduj dane z JSON
-        database.reloadDatabase()
-        loadData()  // Załaduj nowe dane z bazy po załadowaniu danych z JSON
+        do {
+            try database.reloadDatabase()
+            loadData()
+        } catch {
+            print("Błąd ładowania nowych danych: \(error.localizedDescription)")
+        }
     }
     
     func focusOnDwarf(_ dwarf: Dwarf) {
         withAnimation {
             region = MKCoordinateRegion(
                 center: dwarf.coordinate2D,
-                span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001) // Zoom
+                span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
             )
         }
     }
     
     func selectDwarf(_ dwarf: Dwarf) {
-        // Zaktualizuj wybranego krasnala
         if selectedDwarf?.id == dwarf.id {
-            selectedDwarf = nil // Jeśli klikniemy w tego samego krasnala, odznaczmy go
+            selectedDwarf = nil
         } else {
             selectedDwarf = dwarf
         }
     }
     
     func markAsVisited(_ dwarf: Dwarf) {
-        let updatedDwarf = Dwarf(id: dwarf.id, name: dwarf.name, description: dwarf.description, coordinate: dwarf.coordinate, visited: true)
-        database.markAsVisited(dwarfID: dwarf.id, visited: true)
+            let updatedDwarf = Dwarf(id: dwarf.id, name: dwarf.name, description: dwarf.description, coordinate: dwarf.coordinate, visited: true)
+            database.markAsVisited(dwarfID: dwarf.id, visited: true)
         
-        // Update local data to reflect the new visited state
-        if let index = dwarfs.firstIndex(where: { $0.id == dwarf.id }) {
-            dwarfs[index].visited.toggle()
-        }
-        
-        // Po kliknięciu zmień wybranego krasnala na nil, by ukryć prostokąt
-        selectedDwarf = nil
+            if let index = dwarfs.firstIndex(where: { $0.id == dwarf.id }) {
+                dwarfs[index].visited.toggle()
+            }
     }
 }
 
@@ -183,7 +187,6 @@ struct DwarfListView: View {
             TextField("Szukaj krasnala...", text: $searchText)
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding([.top, .horizontal])
             if dwarfs.isEmpty {
                 Text("Brak wyników wyszukiwania")
                     .foregroundColor(.gray)
@@ -193,23 +196,17 @@ struct DwarfListView: View {
                 HStack {
                     Text(dwarf.name)
                     Spacer()
-                    if dwarf.visited {
-                        Text("Odwiedzony")
-                            .foregroundColor(.green)
-                    } else {
-                        Text("Nieodwiedzony")
-                            .foregroundColor(.red)
-                    }
+                    Text(dwarf.visited ? "Odwiedzony" : "Nieodwiedzony")
+                        .foregroundColor(dwarf.visited ? .green : .red)
                 }
                 .onTapGesture {
-                    focusOnDwarf(dwarf)  // Funkcja do zmiany lokalizacji i focusu
+                    focusOnDwarf(dwarf)
                 }
             }
-            Spacer()
         }
-        .padding()
     }
 }
+
 
 #Preview {
     DwarfMapView()

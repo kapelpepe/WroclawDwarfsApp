@@ -8,14 +8,20 @@
 import Foundation
 import MapKit
 
-struct Dwarf: Identifiable, Decodable {
+protocol Description { //Wlasny protokol
+    var id: String {get}
+    var name: String {get}
+    var description: String {get}
+}
+
+struct Dwarf: Identifiable, Codable, Equatable, Hashable, Description {
     var id: String
     var name: String
     var description: String
     var coordinate: Coordinate
     var visited: Bool
-
-    struct Coordinate: Decodable {
+    
+    struct Coordinate: Codable, Equatable, Hashable {
         var latitude: Double
         var longitude: Double
     }
