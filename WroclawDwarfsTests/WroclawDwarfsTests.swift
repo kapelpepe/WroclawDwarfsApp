@@ -6,31 +6,31 @@
 //
 
 import XCTest
+import MapKit
 @testable import WroclawDwarfs
 
-final class WroclawDwarfsTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+final class DwarfMapViewTests: XCTestCase {
+    
+    func testFocusOnDwarf() {
+        // Arrange: Tworzymy przykładowego krasnala i obiekt DwarfMapView
+        let testDwarf = Dwarf(
+            id: "test_id",
+            name: "Test Dwarf",
+            description: "Opis krasnala testowego",
+            coordinate: Dwarf.Coordinate(latitude: 51.1100, longitude: 17.0300),
+            visited: false
+        )
+        
+        let dwarfMapView = DwarfMapView()
+        
+        dwarfMapView.focusOnDwarf(testDwarf) //Wywolujemy metode focusOn na danych testowych
+        
+        let expectedRegion = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 51.1100, longitude: 17.0300),
+            span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+        )
+        
+        XCTAssertEqual(dwarfMapView.region.center.latitude, expectedRegion.center.latitude, accuracy: 0.01)
+        XCTAssertEqual(dwarfMapView.region.center.longitude, expectedRegion.center.longitude, accuracy: 0.01)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

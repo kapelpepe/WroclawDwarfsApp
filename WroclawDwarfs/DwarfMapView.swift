@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct DwarfMapView: View {
-    @State private var region = MKCoordinateRegion(
+    @State public var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 51.107885, longitude: 17.038538),
         span: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
     )
@@ -97,12 +97,12 @@ struct DwarfMapView: View {
                 .navigationTitle("Mapa Krasnali")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Krasnale") {
+                        Button("Lista Krasnali") {
                             showDwarfsList.toggle()
                         }
                     }
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button("Załaduj Nowe Krasnale") {
+                        Button("Reload") {
                             reloadNewData()
                         }
                     }
