@@ -17,7 +17,17 @@ struct DwarfMapView: View {
     @State private var dwarfs: [Dwarf] = []
     @State private var selectedDwarf: Dwarf?
     @State private var showDwarfsList = false
+    @State private var searchText: String = ""
     private let database = DwarfDatabase()
+    
+    var filteredDwarfs: [Dwarf] {
+            // Filtrowanie krasnali na podstawie tekstu wyszukiwania
+            if searchText.isEmpty {
+                return dwarfs
+            } else {
+                return dwarfs.filter { $0.name.lowercased().contains(searchText.lowercased()) } //Funkcja wyzszego rzedu - filter
+            }
+        }
     
     var body: some View {
         NavigationView {
@@ -42,7 +52,7 @@ struct DwarfMapView: View {
                             }
                             // Biały prostokąt
                             VStack {
-                                // Biały prostokąt z przyciskiem i imieniem, przesunięty powyżej
+                                // Biały prostokąt z przyciskiem i imieniem
                                 if selectedDwarf?.id == dwarf.id {
                                     VStack(spacing: 5) {
                                         Text(dwarf.name)
@@ -55,10 +65,10 @@ struct DwarfMapView: View {
                                         Button(action: {
                                             markAsVisited(dwarf) // Zmiana stanu "odwiedzenia"
                                         }) {
-                                            Text("Odwiedzone")
+                                            Text(dwarf.visited ? "Nieodwiedzone" : "Odwiedzone")
                                                 .foregroundColor(.white)
                                                 .padding()
-                                                .background(Color.green)
+                                                .background(dwarf.visited ? Color.red : Color.green)
                                                 .cornerRadius(8)
                                         }
                                         .padding(5)
@@ -70,7 +80,7 @@ struct DwarfMapView: View {
                                     .background(Color.white)
                                     .cornerRadius(8)
                                     .shadow(radius: 5)
-                                    .offset(y: -100) // Przesunięcie w górę
+                                    .offset(y: -105) // Przesunięcie w górę
                                 }
                             }
                         }
@@ -104,13 +114,18 @@ struct DwarfMapView: View {
                 }
             }
             .sheet(isPresented: $showDwarfsList) {
-                DwarfListView(dwarfs: dwarfs, onVisited: { dwarf in
-                    markAsVisited(dwarf)
-                }, focusOnDwarf: { dwarf in
-                    focusOnDwarf(dwarf)
-                    showDwarfsList = false // Zamknij sheet po kliknięciu w krasnala
-                })
-            }
+                            DwarfListView(
+                                dwarfs: filteredDwarfs,
+                                onVisited: { dwarf in
+                                    markAsVisited(dwarf)
+                                },
+                                focusOnDwarf: { dwarf in
+                                    focusOnDwarf(dwarf)
+                                    showDwarfsList = false // Zamknij sheet po kliknięciu w krasnala
+                                },
+                                searchText: $searchText // Przekazywanie searchText jako Binding
+                            )
+                        }
         }
     }
     
@@ -148,7 +163,7 @@ struct DwarfMapView: View {
         
         // Update local data to reflect the new visited state
         if let index = dwarfs.firstIndex(where: { $0.id == dwarf.id }) {
-            dwarfs[index].visited = true
+            dwarfs[index].visited.toggle()
         }
         
         // Po kliknięciu zmień wybranego krasnala na nil, by ukryć prostokąt
@@ -161,9 +176,19 @@ struct DwarfListView: View {
     var dwarfs: [Dwarf]
     var onVisited: (Dwarf) -> Void
     var focusOnDwarf: (Dwarf) -> Void
+    @Binding var searchText: String
     
     var body: some View {
         VStack {
+            TextField("Szukaj krasnala...", text: $searchText)
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding([.top, .horizontal])
+            if dwarfs.isEmpty {
+                Text("Brak wyników wyszukiwania")
+                    .foregroundColor(.gray)
+                    .padding()
+            }
             List(dwarfs) { dwarf in
                 HStack {
                     Text(dwarf.name)
