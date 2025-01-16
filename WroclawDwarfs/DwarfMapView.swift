@@ -18,8 +18,7 @@ struct DwarfMapView: View {
     @State private var selectedDwarf: Dwarf?
     @State private var showDwarfsList = false
     @State private var searchText: String = ""
-    @State private var showAlert = false
-    @State private var alertMessage = ""
+
     
     private let database = DwarfDatabase()
     
@@ -27,7 +26,7 @@ struct DwarfMapView: View {
         if searchText.isEmpty {
             return dwarfs
         } else {
-            return dwarfs.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+            return dwarfs.filter { $0.name.lowercased().contains(searchText.lowercased()) } //Funkcja wyzszego rzedu - filter
         }
     }
     
@@ -71,17 +70,16 @@ struct DwarfMapView: View {
                                             .background(dwarf.visited ? Color.red : Color.green)
                                             .cornerRadius(8)
                                     }
-                                    .padding(5)
+                                    .padding(2)
                                     .background(Color.white)
                                     .cornerRadius(8)
-                                    .shadow(radius: 5)
+                                    .shadow(radius: 2)
                                 }
                                 .padding(10)
                                 .background(Color.white)
                                 .cornerRadius(8)
                                 .shadow(radius: 5)
-                                .offset(y: -105)
-                                .animation(.easeInOut(duration: 0.3), value: selectedDwarf)
+                                .offset(y: -104)
                             }
                         }
                     }
@@ -94,7 +92,7 @@ struct DwarfMapView: View {
                             }
                         }
                 )
-                .navigationTitle("Mapa Krasnali")
+                .navigationTitle("Mapa krasnali")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Lista Krasnali") {
@@ -123,9 +121,6 @@ struct DwarfMapView: View {
                     },
                     searchText: $searchText
                 )
-            }
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("Informacja"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
         }
     }
@@ -180,19 +175,36 @@ struct DwarfListView: View {
     var dwarfs: [Dwarf]
     var onVisited: (Dwarf) -> Void
     var focusOnDwarf: (Dwarf) -> Void
+    
+    @State private var isSortedByVisited: Bool = false
+        
+    var sortedDwarfs: [Dwarf] {
+        isSortedByVisited
+            ? dwarfs.sorted { $0.visited && !$1.visited }
+            : dwarfs
+    }
+    
     @Binding var searchText: String
     
     var body: some View {
         VStack {
-            TextField("Szukaj krasnala...", text: $searchText)
+            HStack {
+                TextField("Szukaj krasnala...", text: $searchText)
+                    .padding()
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                Button(action: {
+                    isSortedByVisited.toggle()
+                }) {
+                    Text(isSortedByVisited ? "Sortuj domyślnie" : "Sortuj według odwiedzenia")
+                }
                 .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            if dwarfs.isEmpty {
+            }
+            if sortedDwarfs.isEmpty {
                 Text("Brak wyników wyszukiwania")
                     .foregroundColor(.gray)
                     .padding()
             }
-            List(dwarfs) { dwarf in
+            List(sortedDwarfs) { dwarf in
                 HStack {
                     Text(dwarf.name)
                     Spacer()
